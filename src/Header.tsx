@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
+import logo from "logo.svg";
 import Button from "react-bootstrap/Button";
-import useInterval from "./useInterval";
+import useInterval from "useInterval";
 
 function Header() {
   const [count, setCount] = useState(0);
