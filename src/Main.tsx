@@ -22,9 +22,9 @@ function Main() {
     setTodo_text(item.text);
   }
 
-  // function doSubmit(e: React.FormEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-  // }
+  function doSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
 
   function doReset() {
     setTodo_text("");
@@ -62,7 +62,7 @@ function Main() {
   }
 
   function doEnter(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.keyCode === 13) {
+    if (e.charCode === 13) {
       doAdd();
     }
   }
