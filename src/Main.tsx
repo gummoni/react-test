@@ -9,6 +9,7 @@ import TaskList, { TaskItem } from "components/TaskList";
 
 function Main() {
   const [selObj, setSelObj] = useState<TaskItem | null>();
+  const [selFlg, setSelFlg] = useState<boolean>(false);
   const [todo_text, setTodo_text] = useState<string>("");
   const [tasks, setTask] = useState<TaskItem[]>([]);
 
@@ -18,12 +19,13 @@ function Main() {
 
   function doSelect(item: TaskItem) {
     setSelObj(item);
+    setSelFlg(item.done);
     setTodo_text(item.text);
   }
 
   function doToggleState(item: TaskItem) {
-    item.done = (item.done) ? false : true;
-    useState(tasks);
+    item.done = item.done ? false : true;
+    setSelFlg(item.done);
   }
 
   function doReset() {
@@ -120,7 +122,7 @@ function Main() {
           </Tab>
           <Tab eventKey="task" title="task">
             <TaskList
-              taskitems={tasks.filter(item => !item.done)}
+              taskitems={tasks.filter((item) => !item.done)}
               selectObj={selObj}
               doSelect={doSelect}
               doToggleState={doToggleState}
@@ -128,7 +130,7 @@ function Main() {
           </Tab>
           <Tab eventKey="done" title="done">
             <TaskList
-              taskitems={tasks.filter(item => item.done)}
+              taskitems={tasks.filter((item) => item.done)}
               selectObj={selObj}
               doSelect={doSelect}
               doToggleState={doToggleState}
