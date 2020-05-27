@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import TaskList, { TaskItem } from "components/TaskList";
@@ -22,8 +21,9 @@ function Main() {
     setTodo_text(item.text);
   }
 
-  function doSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  function doToggleState(item: TaskItem) {
+    item.done = (item.done) ? false : true;
+    useState(tasks);
   }
 
   function doReset() {
@@ -36,6 +36,7 @@ function Main() {
     data.push({
       date: new Date(),
       text: todo_text,
+      done: false,
     });
     setTask(data);
     doReset();
@@ -114,20 +115,23 @@ function Main() {
               taskitems={tasks}
               selectObj={selObj}
               doSelect={doSelect}
+              doToggleState={doToggleState}
             />
           </Tab>
           <Tab eventKey="task" title="task">
             <TaskList
-              taskitems={tasks}
+              taskitems={tasks.filter(item => !item.done)}
               selectObj={selObj}
               doSelect={doSelect}
+              doToggleState={doToggleState}
             />
           </Tab>
           <Tab eventKey="done" title="done">
             <TaskList
-              taskitems={tasks}
+              taskitems={tasks.filter(item => item.done)}
               selectObj={selObj}
               doSelect={doSelect}
+              doToggleState={doToggleState}
             />
           </Tab>
         </Tabs>

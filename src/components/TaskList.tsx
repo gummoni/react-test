@@ -4,12 +4,14 @@ import ListGroup from "react-bootstrap/ListGroup";
 export type TaskItem = {
   date: Date;
   text: string;
+  done: boolean;
 };
 
 type TaskListProp = {
   taskitems: TaskItem[] | null | undefined;
   selectObj: TaskItem | null | undefined;
   doSelect(item: TaskItem): void;
+  doToggleState(item: TaskItem): void;
 };
 
 function TaskList(prop: TaskListProp) {
@@ -25,11 +27,19 @@ function TaskList(prop: TaskListProp) {
             onClick={() => prop.doSelect(item)}
             variant={selectionColor}
           >
-            {item.text}
+            <td>
+              <button onClick={() => prop.doToggleState(item)}>{(item.done) ? "-" : "v"}</button>
+            </td>
+            <td>
+              {item.text}
+            </td>
+            <td>
+              <button>...</button>
+            </td>
           </ListGroup.Item>
         );
       })}
-    </ListGroup>
+    </ListGroup >
   );
 }
 
