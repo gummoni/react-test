@@ -1,0 +1,19 @@
+image: node:6.5.0
+
+pages:
+  cache:
+    paths:
+      - note_modules/
+
+  stage: deploy
+  script:
+    - npm install
+    - npm run build
+    - npm -rf public
+    - mv build public
+  artifacts:
+    path:
+      - public
+    only:
+      - master
+      
