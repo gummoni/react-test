@@ -35,7 +35,7 @@ function Main() {
 
   function doAdd() {
     let data = tasks.slice();
-    data.push({
+    data.unshift({
       date: new Date(),
       text: todo_text,
       done: false,
@@ -95,7 +95,7 @@ function Main() {
             <Button type="submit" variant="primary" onClick={doAdd}>
               add
             </Button>
-            <Button type="submit" variant="warning" onClick={doModify}>
+            {/* <Button type="submit" variant="warning" onClick={doModify}>
               modify
             </Button>
             <Button type="submit" variant="danger" onClick={doDelete}>
@@ -103,7 +103,7 @@ function Main() {
             </Button>
             <Button type="submit" variant="outline-dark" onClick={doClear}>
               clear
-            </Button>
+            </Button> */}
           </InputGroup.Append>
         </InputGroup>
 
@@ -143,6 +143,29 @@ function Main() {
         <br />
         <br />
       </Container>
+      <br />
+      <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     </main>
   );
 }

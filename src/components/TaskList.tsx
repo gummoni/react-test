@@ -1,6 +1,11 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 //import Badge from "react-bootstrap/Badge";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faMapPin } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faCheck, faMapPin);
 
 export type TaskItem = {
   date: Date;
@@ -39,17 +44,18 @@ function TaskList(prop: TaskListProp) {
             variant={selectionColor}
           >
             <td>
-              <button onClick={() => prop.doToggleState(item)}>
-                {item.done ? "-" : "v"}
-              </button>
+              <FontAwesomeIcon 
+                onClick={() => prop.doToggleState(item)}
+                icon={item.done ? "check" : "map-pin"} 
+                />
             </td>
             <td>
               {/* <TaskItem selectObj={prop.selectObj} currentObj={item} /> */}
               {item.text}
             </td>
-            <td>
+            {/* <td>
               <button>...</button>
-            </td>
+            </td> */}
           </ListGroup.Item>
         );
       })}
